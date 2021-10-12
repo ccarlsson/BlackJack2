@@ -15,11 +15,32 @@ namespace BlackJack
 
             Console.WriteLine("Dealern har:");
             Console.WriteLine(game.Dealer.LastDrawnCard);
-            Console.WriteLine("Du har:");
-            foreach (var card in game.Player.Hand)
+            
+
+            while (true)
             {
-                Console.WriteLine(card);
+                Console.WriteLine("Du har:");
+                foreach (var card in game.Player.Hand)
+                {
+                    Console.WriteLine(card);
+                }
+                Console.WriteLine($"The total is {game.Player.BestValue}");
+
+                Console.WriteLine("Vill du forstätta och dra ett kort till? (Y/n)");
+                if (Console.ReadKey().KeyChar.ToString().ToLower() != "y") break;
+
+                
+                game.PlayerDraw();
+                
+                if (game.Status == GameStatus.Lost) break; 
             }
+
+            while (game.Status == GameStatus.Playing)
+            {
+                game.DealerDraw();
+            }
+
+
         }
     }
 }
