@@ -15,9 +15,8 @@
 
         public void Reset()
         {
-            Player = new Player();
-            Dealer = new Player();
-            Deck = new Deck(5);
+            Player.Reset();
+            Dealer.Reset();
             Status = GameStatus.Playing;
         }
 
@@ -51,6 +50,8 @@
                 Status = GameStatus.Won;
             else if (Dealer.BestValue > Player.BestValue)
                 Status = GameStatus.Lost;
+            else
+                Status = GameStatus.Tie;
         }
     }
 }

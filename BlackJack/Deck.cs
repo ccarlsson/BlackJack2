@@ -46,6 +46,7 @@ namespace BlackJack
 
         public Card Draw()
         {
+            // TODO: Behöver checka så att inte kortleken är slut... 
             Card card = _cards[0];
             _cards.Remove(card);
             return card;
