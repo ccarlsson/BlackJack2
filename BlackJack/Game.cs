@@ -1,36 +1,41 @@
-﻿namespace BlackJack
+﻿using System.Collections.Generic;
+
+namespace BlackJack
 {
     public class Game
     {
-        public Player Player = new Player();
-        public Player Dealer = new Player();
+        private Player _player;
+        private Player _dealer;
 
-        public Deck Deck = new Deck(1);
+        private Deck _deck = new Deck(1);
+
         public GameStatus Status = GameStatus.Playing;
 
-        public Game()
+        public Game(Player player, Player dealer, Deck deck)
         {
-
+            _player = player;
+            _dealer = dealer;
+            _deck = deck;
         }
 
         public void Reset()
         {
-            Player.Reset();
-            Dealer.Reset();
+            _player.Reset();
+            _dealer.Reset();
             Status = GameStatus.Playing;
         }
 
         public void PlayerDraw()
         {
-            Card card = Deck.Draw();
-            Player.Hand.Add(card);
-            Player.LastDrawnCard = card;
+            Card card = _deck.Draw();
+            _player.Hand.Add(card);
+            _player.LastDrawnCard = card;
 
-            if (Player.BestValue > 21)
+            if (_player.BestValue > 21)
             {
                 Status = GameStatus.Lost;
             }
-            if (Player.BestValue == 21 && Player.Hand.Count == 2)
+            if (_player.BestValue == 21 && _player.Hand.Count == 2)
             {
                 Status = GameStatus.BlackJack;
             }
@@ -38,20 +43,27 @@
 
         public void DealerDraw()
         {
-            Card card = Deck.Draw();
-            Dealer.Hand.Add(card);
-            Dealer.LastDrawnCard = card;
+            Card card = _deck.Draw();
+            _dealer.Hand.Add(card);
+            _dealer.LastDrawnCard = card;
 
-            if (Dealer.BestValue < 17)
+            if (_dealer.BestValue < 17)
                 return;
-            else if (Dealer.BestValue > 21)
+            else if (_dealer.BestValue > 21)
                 Status = GameStatus.Won;
-            else if (Dealer.BestValue < Player.BestValue)
+            else if (_dealer.BestValue < _player.BestValue)
                 Status = GameStatus.Won;
-            else if (Dealer.BestValue > Player.BestValue)
+            else if (_dealer.BestValue > _player.BestValue)
                 Status = GameStatus.Lost;
             else
                 Status = GameStatus.Tie;
         }
+
+        public Card DealerLastDrawnCard => _dealer.LastDrawnCard; 
+        public IEnumerable<Card> PlayerHand => _player.Hand;
+        public IEnumerable<Card> DealerHand => _dealer.Hand; 
+        public int DealerBestValue => _dealer.BestValue;
+        public int PlayerBestValue => _player.BestValue;
+        
     }
 }
