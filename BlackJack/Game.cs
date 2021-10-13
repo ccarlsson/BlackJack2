@@ -9,7 +9,10 @@ namespace BlackJack
 
         private Deck _deck = new Deck(1);
 
-        public GameStatus Status = GameStatus.Playing;
+        public GameStatus Status
+        {
+            get; private set;
+        }
 
         public Game(Player player, Player dealer, Deck deck)
         {
