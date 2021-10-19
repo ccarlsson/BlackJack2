@@ -71,7 +71,7 @@ namespace BlackJack
                         Console.WriteLine("Det blev lika!");
                         break;
                     case GameStatus.BlackJack:
-                        Console.WriteLine("Grattis du vann!");
+                        Console.WriteLine("BLACK JACK!!11! Du vann!");
                         break;
                     default:
                         break;
