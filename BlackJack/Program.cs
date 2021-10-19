@@ -23,12 +23,14 @@ namespace BlackJack
                 game.PlayerDraw();
                 game.DealerDraw();
 
-                Console.WriteLine("Dealern har:");
-                Console.WriteLine(game.DealerLastDrawnCard);
 
 
                 while (true)
                 {
+                    Console.Clear();
+                    Console.WriteLine("Dealern har:");
+                    Console.WriteLine(game.DealerLastDrawnCard);
+
                     Console.WriteLine("Du har:");
                     foreach (var card in game.PlayerHand)
                     {

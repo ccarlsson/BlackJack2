@@ -15,6 +15,7 @@
         public override string ToString()
         {
             var symbol = Value.ToString();
+            
             if (Value == 1) symbol = "Ace";
             if (Value > 10)
             {
@@ -33,6 +34,8 @@
 
                 }
             }
+            
+
             return $"{symbol} of {Suit}";
         }
     }
