@@ -22,7 +22,7 @@ namespace BlackJack
                 Console.WriteLine(game.Dealer.LastDrawnCard);
 
 
-                while (true)
+                while (true && game.Status != GameStatus.BlackJack)
                 {
                     Console.WriteLine("Du har:");
                     foreach (var card in game.Player.Hand)
