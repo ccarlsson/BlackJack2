@@ -41,5 +41,52 @@ namespace BlackJack.Tests
             Assert.AreEqual(expected, actual);
 
         }
+
+
+        [TestMethod]
+        public void NonCardShouldNotBeEqual()
+        {
+            // Arrange
+            var cardone = new Card(1, SuitType.Diamond);
+            var cardtwo = new Player();
+
+            // act
+            var areEqual = cardone.Equals(cardtwo);
+
+            // Assert
+
+            Assert.IsFalse(areEqual);
+        }
+
+
+        [TestMethod]
+        public void DiffrentCardShouldNotBeEqual()
+        {
+            // Arrange
+            var cardone = new Card(1, SuitType.Diamond);
+            var cardtwo = new Card(1, SuitType.Club);
+
+            // act
+            var areEqual = cardone.Equals(cardtwo);
+
+            // Assert
+
+            Assert.IsFalse(areEqual);
+        }
+
+        [TestMethod]
+        public void EqualCardShouldBeEqual()
+        {
+            // Arrange
+            var cardone = new Card(1, SuitType.Diamond);
+            var cardtwo = new Card(1, SuitType.Diamond);
+
+            // act
+           
+
+            // Assert
+
+            Assert.IsTrue(cardone == cardtwo);
+        }
     }
 }

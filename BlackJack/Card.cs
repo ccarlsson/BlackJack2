@@ -12,14 +12,18 @@
             Suit = suit;
         }
 
+
+        #region Overrides
+
         public override string ToString()
         {
             var symbol = Value.ToString();
-            
+
             if (Value == 1) symbol = "Ace";
             if (Value > 10)
             {
-                switch( Value ) {
+                switch (Value)
+                {
                     case 11:
                         symbol = "Jack";
                         break;
@@ -34,9 +38,28 @@
 
                 }
             }
-            
+
 
             return $"{symbol} of {Suit}";
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not Card other)
+                return false;
+
+            return (Value == other.Value && Suit == other.Suit);
+        }
+        #endregion
+
+        #region Operator overloads
+        public static bool operator ==(Card lhs, Card rhs) =>
+            lhs.Equals(rhs);
+
+
+        public static bool operator !=(Card lhs, Card rhs) =>
+            !lhs.Equals(rhs);
+
+        #endregion
     }
 }

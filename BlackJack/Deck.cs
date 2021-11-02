@@ -7,11 +7,11 @@ namespace BlackJack
     {
         int _nrOfDecks;
         List<Card> _cards;
-        Random _random;
-        public Deck(int nrOfDecks)
+        IRandom _random;
+        public Deck(int nrOfDecks, IRandom random)
         {
             _nrOfDecks = nrOfDecks;
-            _random = new Random();
+            _random = random;
             ResetAndShuffle();
         }
 
@@ -33,7 +33,7 @@ namespace BlackJack
 
         public void Shuffle()
         {
-            List<Card> tmpDeck = new List<Card>();
+            List<Card> tmpDeck = new();
             while (_cards.Count > 0)
             {
                 int index = _random.Next(_cards.Count);
@@ -43,6 +43,7 @@ namespace BlackJack
             }
             _cards = tmpDeck; 
         }
+
 
         public Card Draw()
         {

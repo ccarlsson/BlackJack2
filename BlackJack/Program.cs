@@ -8,7 +8,7 @@ namespace BlackJack
         {
             Player player = new Player();
             Player dealer = new Player();
-            Deck deck = new Deck(1);
+            Deck deck = new Deck(1, new BlackJackRandom());
 
             Game game = new Game(player, dealer, deck);
             bool gameOn = true;

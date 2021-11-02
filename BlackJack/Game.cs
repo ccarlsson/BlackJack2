@@ -7,7 +7,7 @@ namespace BlackJack
         private Player _player;
         private Player _dealer;
 
-        private Deck _deck = new Deck(1);
+        private Deck _deck = new Deck(1, new BlackJackRandom());
 
         public GameStatus Status
         {
