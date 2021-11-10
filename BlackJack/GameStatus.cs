@@ -1,11 +1,10 @@
-﻿namespace BlackJack
+﻿namespace BlackJack;
+
+public enum GameStatus
 {
-    public enum GameStatus
-    {
-        Won,
-        Lost,
-        Playing,
-        Tie,
-        BlackJack
-    }
+    Won,
+    Lost,
+    Playing,
+    Tie,
+    BlackJack
 }

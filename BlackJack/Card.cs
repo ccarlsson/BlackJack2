@@ -1,39 +1,39 @@
-﻿namespace BlackJack
+﻿namespace BlackJack;
+
+public class Card
 {
-    public class Card
+    public int Value { get; set; }
+    public SuitType Suit { get; set; }
+    public int BlackJackValue { get; set; }
+
+    public Card(int value, SuitType suit)
     {
-        public int Value { get; set; }
-        public SuitType Suit { get; set; }
-        public int BlackJackValue { get; set; }
+        Value = value;
+        Suit = suit;
+    }
 
-        public Card(int value, SuitType suit)
+    public override string ToString()
+    {
+        var symbol = Value.ToString();
+        if (Value == 1) symbol = "Ace";
+        if (Value > 10)
         {
-            Value = value;
-            Suit = suit;
-        }
-
-        public override string ToString()
-        {
-            var symbol = Value.ToString();
-            if (Value == 1) symbol = "Ace";
-            if (Value > 10)
+            switch (Value)
             {
-                switch( Value ) {
-                    case 11:
-                        symbol = "Jack";
-                        break;
-                    case 12:
-                        symbol = "Queen";
-                        break;
-                    case 13:
-                        symbol = "King";
-                        break;
-                    default:
-                        throw new System.Exception("WTF!");
+                case 11:
+                    symbol = "Jack";
+                    break;
+                case 12:
+                    symbol = "Queen";
+                    break;
+                case 13:
+                    symbol = "King";
+                    break;
+                default:
+                    throw new System.Exception("WTF!");
 
-                }
             }
-            return $"{symbol} of {Suit}";
         }
+        return $"{symbol} of {Suit}";
     }
 }

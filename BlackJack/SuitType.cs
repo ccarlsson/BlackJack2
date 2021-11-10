@@ -1,10 +1,10 @@
-﻿namespace BlackJack
+﻿namespace BlackJack;
+
+public enum SuitType
 {
-    public enum SuitType
-    {
-        Club,
-        Heart, 
-        Diamond,
-        Spade
-    }
+    Club,
+    Heart,
+    Diamond,
+    Spade
 }
+
